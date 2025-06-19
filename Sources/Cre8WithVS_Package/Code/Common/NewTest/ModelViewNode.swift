@@ -6,17 +6,16 @@
 //
 import Foundation
 import SwiftUI
-
-class ModelViewNode: ObservableObject,Identifiable {
+   final class ModelViewNode:Identifiable,@unchecked Sendable{
     let id = UUID()
     let info: ModelViewInfo
     let viewBuilder: () -> AnyView
-    let children: [ModelViewNode]
-    init(info: ModelViewInfo, viewBuilder: @escaping () -> AnyView, children: [ModelViewNode]) {
+    let children:[ModelViewNode]
+    init(info: ModelViewInfo, viewBuilder: @escaping  () -> AnyView, children: [ModelViewNode]) {
         self.info = info
         self.viewBuilder = viewBuilder
         self.children = children
-    }
+    }    
 }
 func searchNodes(in nodes: [ModelViewNode], for query: String) -> [ModelViewNode] {
     nodes.compactMap { node in

@@ -6,7 +6,7 @@
 //
 import SwiftUI
 struct ViewNode: View{
-    let node: ModelViewNode
+    var node: ModelViewNode
     var body: some View {
         ZStack{
             if !node.children.isEmpty {
@@ -20,7 +20,6 @@ struct ViewNode: View{
                         }
                     }
                 }
-                
             } else {
                 node.viewBuilder()
                     

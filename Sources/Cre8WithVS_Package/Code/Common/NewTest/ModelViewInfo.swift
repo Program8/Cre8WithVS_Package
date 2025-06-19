@@ -5,7 +5,7 @@
 //  Created by Vijay Sachan on 6/18/25.
 //
 import Foundation
-struct ModelViewInfo:Identifiable {
+struct ModelViewInfo:Identifiable,Sendable{
     let id = UUID()
     let title: String
     let subtitle: String
