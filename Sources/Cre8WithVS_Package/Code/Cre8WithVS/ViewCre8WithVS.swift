@@ -2,13 +2,13 @@
 import SwiftUI
 import Foundation
 public struct ViewCre8WithVS: View {
-    @StateObject private var dataModel = DataSwiftUI()
-    public init () {
+    @StateObject private var viewModel=ViewModelSwiftUI()
+    public init(){
         
     }
     public var body: some View {
         VStack {
-            if let rootNode = dataModel.rootNode {
+            if let rootNode = viewModel.rootNode {
                 ViewNode(node: rootNode)
             } else {
                 Text("Loading...")
@@ -16,8 +16,8 @@ public struct ViewCre8WithVS: View {
             }
         }
         .task {
-            if dataModel.rootNode == nil {
-                await dataModel.loadDataAsync()
+            if viewModel.rootNode == nil {
+                await viewModel.loadDataAsync()
             }
         }
     }
