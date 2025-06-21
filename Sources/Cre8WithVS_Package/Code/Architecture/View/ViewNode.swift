@@ -27,3 +27,28 @@ struct ViewNode:View{
         }.navigationTitle(node.title)
     }
 }
+
+final class NodeViewModel: ObservableObject, Identifiable {
+    let id = UUID()
+    let model: NodeModel
+    @Published var children: [NodeViewModel] = []
+
+    init(model: NodeModel) {
+        self.model = model
+        self.children = model.children.map { NodeViewModel(model: $0) }
+    }
+
+    @ViewBuilder
+    func buildView() -> some View {
+        switch model.type {
+        case .profile:
+            ProfileView(title: model.title, subtitle: model.subtitle)
+        case .settings:
+            SettingsView(title: model.title, subtitle: model.subtitle)
+        case .privacy:
+            PrivacyView(title: model.title, subtitle: model.subtitle)
+        case .customView(let viewBuilder):
+            viewBuilder(model)
+        }
+    }
+}
