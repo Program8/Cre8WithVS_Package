@@ -5,7 +5,7 @@
 //  Created by Vijay Sachan on 6/18/25.
 //
 import SwiftUI
-struct ViewNode: View{
+struct ViewNode:View{
     var node: ModelViewNode
     var body: some View {
         ZStack{
@@ -14,8 +14,8 @@ struct ViewNode: View{
                     ForEach(node.children) { item in
                         NavigationLink(destination: ViewNode(node: item)){
                             VStack(alignment: .leading, spacing: 4){
-                                Text("\(item.info.title)").pkg_FontTitle()
-                                Text("\(item.info.subtitle)").pkg_FontSubTitle().foregroundColor(.gray)
+                                Text("\(item.title)").pkg_FontTitle()
+                                Text("\(item.subtitle)").pkg_FontSubTitle().foregroundColor(.gray)
                             }
                         }
                     }
@@ -24,6 +24,6 @@ struct ViewNode: View{
                 node.viewBuilder()
                     
             }
-        }.navigationTitle(node.info.title)
+        }.navigationTitle(node.title)
     }
 }

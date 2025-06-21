@@ -22,6 +22,25 @@ public struct ViewCre8WithVS: View {
         }
     }
 }
+//#Preview {
+//    NavigationView{
+//        ViewCre8WithVS()
+//    }
+//}
+//public struct ViewCre8WithVS: View {
+//    
+//    public init(){
+//        
+//    }
+//    public var body: some View {
+//        List(1...10, id: \.self) { item in
+//                        NavigationLink("Item \(item)", destination: ZStackDemo())
+//        }.navigationTitle("Swigfg")
+//       
+////        NavigationLink("Go to Detail", destination: ZStackDemo())
+//        
+//    }
+//}
 #Preview {
     NavigationView{
         ViewCre8WithVS()

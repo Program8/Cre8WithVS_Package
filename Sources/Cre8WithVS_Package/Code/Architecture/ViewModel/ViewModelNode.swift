@@ -26,20 +26,8 @@ class ViewModelNode: ObservableObject{
         return self
     }
     /// Creates the root node using provided parent and children
-    private nonisolated func createRootNode() -> ModelViewNode {
-        return ModelViewNode(
-            info: makeRootNodeInfo(),
-            viewBuilder: makeRootViewBuilder(),
-            children: makeChildNodes()  // Children come from dedicated method
-        )
+     nonisolated func createRootNode() -> ModelViewNode{
+        fatalError("Subclasses must override createRootNode()")
     }
-    nonisolated  func makeRootNodeInfo() -> ModelViewInfo {
-        fatalError("Subclasses must override makeRootNodeInfo()")
-    }
-    nonisolated  func makeRootViewBuilder() -> @Sendable () -> AnyView {
-        return {AnyView(EmptyView())}
-    }
-    nonisolated  func makeChildNodes() -> [ModelViewNode] {
-        return []
-    }
+
 }
